@@ -1,7 +1,10 @@
-import Header from "../components/header"
+import Header from "../components/header";
+import { ChakraProvider } from "@chakra-ui/react";
 
 export default function Home() {
-  return(
-    <Header/>
-  )
+  return (
+    <ChakraProvider>
+      <Header />
+    </ChakraProvider>
+  );
 }
