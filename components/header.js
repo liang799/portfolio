@@ -31,7 +31,6 @@ export default function Header() {
       <Flex
         minH={"60px"}
         py={4}
-        px={4}
         align={"center"}
         px={{ base: "23px", md: "40px", lg: "149px" }}
       >
@@ -77,12 +76,7 @@ const DesktopNav = () => {
   const linkHoverColor = "white";
 
   return (
-    <Stack
-      flex={{ base: 1, md: 0 }}
-      justify={"flex-end"}
-      direction={"row"}
-      spacing={6}
-    >
+    <Stack direction={"row"} spacing={4}>
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
           <Link
@@ -98,7 +92,6 @@ const DesktopNav = () => {
           >
             {navItem.label}
           </Link>
-          )}
         </Box>
       ))}
     </Stack>
