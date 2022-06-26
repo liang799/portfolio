@@ -83,7 +83,6 @@ const DesktopNav = () => {
       direction={"row"}
       spacing={6}
     >
-      >
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
           <Link

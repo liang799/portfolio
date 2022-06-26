@@ -8,6 +8,9 @@ const theme = extendTheme({
       color: "black.main",
     },
   },
+  fonts: {
+    icon: 'Rage'
+  },
   colors: {
     primary: {
       50: "#f3e5f5",
