@@ -30,44 +30,44 @@ export default function Header() {
   return (
     <Box bg="black.alt">
       <Container maxWidth="container.xl">
-      <Flex
-        minH={"60px"}
-        py={4}
-        align={"center"}
-      >
-        <Flex>
-          <Text fontSize="2xl" fontFamily={"icon"} color="white" mt="2px">
-            Tian Pok
-          </Text>
-        </Flex>
+        <Flex minH={"60px"} py={4} align={"center"}>
+          <Flex>
+            <Text fontSize="2xl" fontFamily={"icon"} color="white" mt="2px">
+              Tian Pok
+            </Text>
+          </Flex>
 
-        <Flex
-          display={{ base: "none", md: "flex" }}
-          flex={{ base: 1 }}
-          justify={{ base: "auto", md: "right" }}
-        >
-          <DesktopNav />
+          <Flex
+            display={{ base: "none", md: "flex" }}
+            flex={{ base: 1 }}
+            justify={{ base: "auto", md: "right" }}
+          >
+            <DesktopNav />
+          </Flex>
+          <Flex
+            flex={{ base: 1, md: "none" }}
+            display={{ base: "flex", md: "none" }}
+            justify="right"
+          >
+            <IconButton
+              onClick={onToggle}
+              color="white"
+              icon={
+                isOpen ? (
+                  <CloseIcon w={3} h={3} />
+                ) : (
+                  <HamburgerIcon w={5} h={5} />
+                )
+              }
+              variant={"ghost"}
+              aria-label={"Toggle Navigation"}
+              _hover={{ bg: "black.alt" }}
+              _active={{
+                bg: "black.alt",
+              }}
+            />
+          </Flex>
         </Flex>
-        <Flex
-          flex={{ base: 1, md: "none" }}
-          display={{ base: "flex", md: "none" }}
-          justify="right"
-        >
-          <IconButton
-            onClick={onToggle}
-            color="white"
-            icon={
-              isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
-            }
-            variant={"ghost"}
-            aria-label={"Toggle Navigation"}
-            _hover={{ bg: 'black.alt' }}
-            _active={{
-              bg: 'black.alt',
-            }}
-          />
-        </Flex>
-      </Flex>
       </Container>
 
       <Collapse in={isOpen} animateOpacity>

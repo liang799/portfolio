@@ -1,15 +1,28 @@
 import { extendTheme, theme as base } from "@chakra-ui/react";
 
 const theme = extendTheme({
-  initialColorMode: "dark",
   useSystemColorMode: false,
+  textStyles: {
+    hero: {
+      fontSize: ["39px", "69px"],
+      fontWeight: "bold",
+      color: "white.txt",
+    },
+    heroXS: {
+      // you can also use responsive styles
+      fontSize: ["17px", "29px"],
+      fontWeight: "light",
+      letterSpacing: "+116%",
+      color: "white.txt",
+    },
+  },
   global: {
     "html, body": {
       color: "black.main",
     },
   },
   fonts: {
-    icon: 'Rage'
+    icon: "Rage",
   },
   colors: {
     primary: {
