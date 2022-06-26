@@ -4,15 +4,18 @@ const theme = extendTheme({
   useSystemColorMode: false,
   textStyles: {
     hero: {
-      fontSize: ["39px", "69px"],
-      fontWeight: "bold",
       color: "white.txt",
+      pb: "34px",
+      lineHeight: "normal",
+      fontSize: ["39px", "58px"],
+      fontWeight: "Bold",
+      textTransform: ["Capitalize", "Uppercase"]
     },
     heroXS: {
       // you can also use responsive styles
-      fontSize: ["17px", "29px"],
+      fontSize: ["17px", "22px"],
       fontWeight: "light",
-      letterSpacing: "+116%",
+      letterSpacing: "4px",
       color: "white.txt",
     },
   },
