@@ -6,6 +6,7 @@ import {
   Button,
   Stack,
   Collapse,
+  Container,
   Icon,
   Link,
   Popover,
@@ -28,11 +29,11 @@ export default function Header() {
 
   return (
     <Box bg="black.alt">
+      <Container maxWidth="container.xl">
       <Flex
         minH={"60px"}
         py={4}
         align={"center"}
-        px={{ base: "23px", md: "40px", lg: "149px" }}
       >
         <Flex>
           <Text fontSize="2xl" fontFamily={"icon"} color="white" mt="2px">
@@ -60,9 +61,14 @@ export default function Header() {
             }
             variant={"ghost"}
             aria-label={"Toggle Navigation"}
+            _hover={{ bg: 'black.alt' }}
+            _active={{
+              bg: 'black.alt',
+            }}
           />
         </Flex>
       </Flex>
+      </Container>
 
       <Collapse in={isOpen} animateOpacity>
         <MobileNav />
@@ -112,7 +118,7 @@ const MobileNavItem = ({ label, children, href }) => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Stack spacing={4} onClick={children && onToggle}>
+    <Stack spacing={4} onClick={children && onToggle} pl={4}>
       <Flex
         py={2}
         as={Link}
