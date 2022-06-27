@@ -1,5 +1,6 @@
 import {
   Flex,
+  Box,
   Heading,
   Image,
   Stack,
@@ -8,7 +9,7 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 
-export default function SplitScreen() {
+export default function Hero() {
   return (
     <Stack
       minH={"80vh"}
@@ -29,16 +30,32 @@ export default function SplitScreen() {
             </Text>{" "}
             Websites
           </Text>
-          <Stack direction={{ base: "column", md: "row" }} pt={30} spacing={4}>
-            <Button colorScheme="primary" size={["sm", "md", "lg"]} borderRadius="full">View My Work</Button>
+          <Stack direction={{ base: "column", md: "row" }} pt={30}>
+            <Box display={{ sm: "inline-block", md: "none" }}>
+              <Image
+                alt={"Hero Image"}
+                objectFit={"contain"}
+                src={"/images/hero.svg"}
+                display="sm"
+              />
+            </Box>
+            <Button
+              colorScheme="primary"
+              size="lg"
+              borderRadius="full"
+              style={{ marginLeft: "0!important" }}
+            >
+              View My Work
+            </Button>
           </Stack>
         </Stack>
       </Flex>
-      <Flex flex={1}>
+      <Flex flex={1} display={{ base: "none", md: "flex" }}>
         <Image
           alt={"Hero Image"}
           objectFit={"contain"}
           src={"/images/hero.svg"}
+          p={{ base: "50px", md: "0px" }}
         />
       </Flex>
     </Stack>
