@@ -20,6 +20,7 @@ export default function Hero() {
         {PROJECTS.map(({ src }) => (
           <Image
             src={src}
+            alt="Project item"
             borderRadius="20px"
             height="482px"
             width="723px"
