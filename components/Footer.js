@@ -5,8 +5,8 @@ import {
   Stack,
   Text,
   useColorModeValue,
-  VisuallyHidden
-} from "@chakra-ui/react"
+  VisuallyHidden,
+} from "@chakra-ui/react";
 
 const SocialButton = ({ children, label, href }) => {
   return (
@@ -23,14 +23,14 @@ const SocialButton = ({ children, label, href }) => {
       justifyContent={"center"}
       transition={"background 0.3s ease"}
       _hover={{
-        bg: useColorModeValue("blackAlpha.200", "whiteAlpha.200")
+        bg: useColorModeValue("blackAlpha.200", "whiteAlpha.200"),
       }}
     >
       <VisuallyHidden>{label}</VisuallyHidden>
       {children}
     </chakra.button>
-  )
-}
+  );
+};
 
 export default function SmallWithSocial() {
   return (
@@ -47,7 +47,7 @@ export default function SmallWithSocial() {
         justify={{ base: "center", md: "space-between" }}
         align={{ base: "center", md: "center" }}
       >
-        <Text>© 2022 Chakra Templates. All rights reserved</Text>
+        <Text>Copyright © 2022 Neoh Tian Pok</Text>
         <Stack direction={"row"} spacing={6}>
           <SocialButton label={"Twitter"} href={"#"}>
             <i class="fas fa-envelope"></i>
@@ -61,5 +61,5 @@ export default function SmallWithSocial() {
         </Stack>
       </Container>
     </Box>
-  )
+  );
 }

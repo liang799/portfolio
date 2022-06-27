@@ -17,9 +17,15 @@ export default function Hero() {
       direction={{ base: "column", md: "row" }}
     >
       <Flex p={8} flex={1} align={"center"} justify={"center"}>
-        <Stack spacing={1} w={"full"} maxW={"lg"}>
+        <Stack
+          spacing={1}
+          w={"full"}
+          maxW={"lg"}
+          justify={{ base: "center", md: "flex-start" }}
+          align={{ base: "center", md: "flex-start" }}
+        >
           <Text textStyle="heroXS"> A developer</Text>
-          <Text textStyle="hero">
+          <Text textStyle="hero" align={{ base: "center", md: "left" }}>
             That{" "}
             <Text as="span" color="primary.300">
               Designs
