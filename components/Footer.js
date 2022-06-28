@@ -50,13 +50,13 @@ export default function SmallWithSocial() {
         <Text>Copyright © 2022 Neoh Tian Pok</Text>
         <Stack direction={"row"} spacing={6}>
           <SocialButton label={"Twitter"} href={"#"}>
-            <i class="fas fa-envelope"></i>
+            <Box className="fas fa-envelope" />
           </SocialButton>
           <SocialButton label={"YouTube"} href={"#"}>
-            <i class="fab fa-linkedin-in"></i>
+            <Box className="fab fa-linkedin-in" />
           </SocialButton>
           <SocialButton label={"Instagram"} href={"#"}>
-            <i class="fab fa-github"></i>
+            <Box className="fab fa-github" />
           </SocialButton>
         </Stack>
       </Container>

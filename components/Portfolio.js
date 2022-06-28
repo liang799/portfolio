@@ -16,7 +16,7 @@ export default function Hero() {
   return (
     <Container maxWidth="full" bg="white.bg" p={0}>
       <Container maxWidth="container.xl" py={4} px={8}>
-        <Heading 
+        <Heading
           pt={10}
           pb={5}
           m="1px"
@@ -32,18 +32,19 @@ export default function Hero() {
         >
           Portfolio
         </Heading>
-        <SimpleGrid columns={{sm:2, md: 3}} spacingX="40px" spacingY="40px">
+        <SimpleGrid columns={{ sm: 2, md: 3 }} spacingX="40px" spacingY="40px">
           {PROJECTS.map(({ src, alt }) => (
             <Image
               src={src}
               alt={alt}
-            fallback={<Skeleton />}
-            width="400px"
-            height="400px"
-            rounded="xl"
-            objectFit="cover"
-            opacity={0.5}
-            _hover={{ opacity: 1 }}
+              key={index}
+              fallback={<Skeleton />}
+              width="400px"
+              height="400px"
+              rounded="xl"
+              objectFit="cover"
+              opacity={0.5}
+              _hover={{ opacity: 1 }}
             />
           ))}
         </SimpleGrid>
