@@ -35,9 +35,9 @@ export default function Hero() {
         <SimpleGrid columns={{ sm: 2, md: 3 }} spacingX="40px" spacingY="40px">
           {PROJECTS.map(({ src, alt }) => (
             <Image
+              key={src}
               src={src}
               alt={alt}
-              key={index}
               fallback={<Skeleton />}
               width="400px"
               height="400px"
