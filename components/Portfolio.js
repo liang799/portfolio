@@ -19,6 +19,7 @@ export default function Hero() {
       <Container maxWidth="container.xl" py={4} px={8}>
         <Heading
           pt={10}
+          id="proj"
           pb={8}
           m="1px"
           _before={{
@@ -40,9 +41,8 @@ export default function Hero() {
           pb={10}
         >
           {PROJECTS.map(({ link, src, alt }) => (
-            <Link href={link} isExternal>
+            <Link href={link} key={src} isExternal>
               <Image
-                key={src}
                 src={src}
                 alt={alt}
                 fallback={<Skeleton />}

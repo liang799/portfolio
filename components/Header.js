@@ -3,12 +3,12 @@ import {
   Flex,
   Text,
   IconButton,
+  Link,
   Button,
   Stack,
   Collapse,
   Container,
   Icon,
-  Link,
   useDisclosure,
 } from "@chakra-ui/react";
 import {
@@ -83,6 +83,7 @@ const DesktopNav = () => {
           <Link
             p={2}
             href={navItem.href ?? "#"}
+            scroll={true}
             fontSize={"sm"}
             fontWeight={500}
             color={linkColor}

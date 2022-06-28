@@ -3,6 +3,7 @@ import {
   Box,
   Heading,
   Image,
+  Link,
   Stack,
   Text,
   Button,
@@ -45,6 +46,7 @@ export default function Hero() {
                 display="sm"
               />
             </Box>
+            <Link href="/#proj">
             <Button
               colorScheme="primary"
               size="lg"
@@ -53,6 +55,7 @@ export default function Hero() {
             >
               View My Work
             </Button>
+            </Link>
           </Stack>
         </Stack>
       </Flex>
