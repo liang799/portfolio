@@ -3,13 +3,14 @@ import {
   Center,
   Heading,
   Container,
+  Image,
   SimpleGrid,
   Box,
   VStack,
   Flex,
   Text,
+  Skeleton,
 } from "@chakra-ui/react";
-import Image from "next/image";
 
 export default function Hero() {
   return (
@@ -31,14 +32,18 @@ export default function Hero() {
         >
           Portfolio
         </Heading>
-        <SimpleGrid columns={2} spacingX="40px" spacingY="20px">
-          {PROJECTS.map(({ src }) => (
+        <SimpleGrid columns={{sm:2, md: 3}} spacingX="40px" spacingY="40px">
+          {PROJECTS.map(({ src, alt }) => (
             <Image
               src={src}
-              key="{index}"
-              borderRadius="20px"
-              height="482px"
-              width="723px"
+              alt={alt}
+            fallback={<Skeleton />}
+            width="400px"
+            height="400px"
+            rounded="xl"
+            objectFit="cover"
+            opacity={0.5}
+            _hover={{ opacity: 1 }}
             />
           ))}
         </SimpleGrid>
@@ -50,14 +55,26 @@ export default function Hero() {
 const PROJECTS = [
   {
     src: "/images/vigour.png",
+    alt: "Vigour Project showcase",
   },
   {
     src: "/images/bellcurvehero.png",
+    alt: "BellCurveHero Internship showcase",
   },
   {
     src: "/images/tree.png",
+    alt: "CSAD Project showcase",
   },
   {
     src: "/images/poketeams.png",
+    alt: "Hobby Project showcase",
+  },
+  {
+    src: "/images/bot.png",
+    alt: "Discord bot showcase",
+  },
+  {
+    src: "/images/website.png",
+    alt: "This website",
   },
 ];
