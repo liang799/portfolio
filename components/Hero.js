@@ -46,16 +46,16 @@ export default function Hero() {
                 display="sm"
               />
             </Box>
-            <Link href="#proj">
-              <Button
-                colorScheme="primary"
-                size="lg"
-                borderRadius="full"
-                style={{ marginLeft: "0!important" }}
-              >
+            <Button
+              colorScheme="primary"
+              size="lg"
+              borderRadius="full"
+              style={{ marginLeft: "0!important" }}
+            >
+              <Link href="#proj" _hover={{ textDecoration: "none" }}>
                 View My Work
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </Stack>
         </Stack>
       </Flex>
