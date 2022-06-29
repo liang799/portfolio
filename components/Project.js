@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Image,
   Link,
@@ -17,7 +16,7 @@ import {
 export default function Project(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <React.Fragment key={props.src}>
+    <>
       <Link onClick={onOpen}>
         <Image
           src={props.src}
@@ -58,6 +57,6 @@ export default function Project(props) {
           </ModalFooter>
         </ModalContent>
       </Modal>
-    </React.Fragment>
+    </>
   );
 }

@@ -41,8 +41,8 @@ export default function Hero() {
           spacingY="40px"
           pb={10}
         >
-          {PROJECTS.map(({ link, src, alt, desc }) => (
-            <Project link={link} src={src} alt={alt} desc={desc} />
+          {PROJECTS.map(({ index, link, src, alt, desc }) => (
+            <Project key={index} link={link} src={src} alt={alt} desc={desc} />
           ))}
         </SimpleGrid>
       </Container>
