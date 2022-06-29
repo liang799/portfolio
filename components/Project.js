@@ -27,25 +27,29 @@ export default function Project(props) {
           height="400px"
           rounded="xl"
           objectFit="cover"
-          opacity={0.5}
-          _hover={{ opacity: 1 }}
+          _hover={{ opacity: 0.5 }}
         />
       </Link>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
+          <ModalHeader>{props.alt}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            Testing 123
+            {props.desc}
+            <Image mt={2} fallback={<Skeleton />} src={props.src} alt={props.alt} />
           </ModalBody>
 
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
+          <ModalFooter align="left">
+            <Link href={props.link} isExternal>
+              <Button colorScheme="primary" mr={3}>
+                Visit
+              </Button>
+            </Link>
+            <Button variant="ghost" onClick={onClose}>
               Close
             </Button>
-            <Button variant="ghost">Secondary Action</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
