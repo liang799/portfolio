@@ -18,7 +18,7 @@ export default function Project(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <Link onClick={onOpen}>
+      <Link onClick={onOpen} key={props.src}>
         <Image
           src={props.src}
           alt={props.alt}
