@@ -12,6 +12,7 @@ import {
   Text,
   Skeleton,
 } from "@chakra-ui/react";
+import Project from "./Project"
 
 export default function Hero() {
   return (
@@ -41,19 +42,7 @@ export default function Hero() {
           pb={10}
         >
           {PROJECTS.map(({ link, src, alt }) => (
-            <Link href={link} key={src} isExternal>
-              <Image
-                src={src}
-                alt={alt}
-                fallback={<Skeleton />}
-                width="400px"
-                height="400px"
-                rounded="xl"
-                objectFit="cover"
-                opacity={0.5}
-                _hover={{ opacity: 1 }}
-              />
-            </Link>
+            <Project link={link} src={src} alt={alt}/>
           ))}
         </SimpleGrid>
       </Container>
