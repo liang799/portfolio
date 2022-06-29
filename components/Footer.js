@@ -39,6 +39,7 @@ export default function SmallWithSocial() {
       color={useColorModeValue("gray.700", "gray.200")}
     >
       <Container
+        id="contact"
         as={Stack}
         maxW={"6xl"}
         py={4}
@@ -49,7 +50,7 @@ export default function SmallWithSocial() {
       >
         <Text>Copyright © 2022 Neoh Tian Pok</Text>
         <Stack direction={"row"} spacing={6}>
-          <SocialButton label={"Email"} href={"#todo"}>
+          <SocialButton label={"Email"} href={"mailto:hello@tianpok.com"}>
             <Box className="fas fa-envelope" />
           </SocialButton>
           <SocialButton label={"Linkedin"} href={"https://www.linkedin.com/in/tianpok"}>
