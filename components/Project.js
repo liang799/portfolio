@@ -17,8 +17,8 @@ import {
 export default function Project(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <>
-      <Link onClick={onOpen} key={props.src}>
+    <React.Fragment key={props.src}>
+      <Link onClick={onOpen}>
         <Image
           src={props.src}
           alt={props.alt}
@@ -38,7 +38,12 @@ export default function Project(props) {
           <ModalCloseButton />
           <ModalBody>
             {props.desc}
-            <Image mt={2} fallback={<Skeleton />} src={props.src} alt={props.alt} />
+            <Image
+              mt={2}
+              fallback={<Skeleton />}
+              src={props.src}
+              alt={props.alt}
+            />
           </ModalBody>
 
           <ModalFooter align="left">
@@ -53,6 +58,6 @@ export default function Project(props) {
           </ModalFooter>
         </ModalContent>
       </Modal>
-    </>
+    </React.Fragment>
   );
 }
