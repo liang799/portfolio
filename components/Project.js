@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Image,
   Link,
@@ -11,7 +12,6 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
-  Lorem,
 } from "@chakra-ui/react";
 
 export default function Project(props) {
