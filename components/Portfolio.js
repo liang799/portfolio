@@ -12,7 +12,7 @@ import {
   Text,
   Skeleton,
 } from "@chakra-ui/react";
-import Project from "./Project"
+import Project from "./Project";
 
 export default function Hero() {
   return (
@@ -41,8 +41,8 @@ export default function Hero() {
           spacingY="40px"
           pb={10}
         >
-          {PROJECTS.map(({ link, src, alt }) => (
-            <Project link={link} src={src} alt={alt}/>
+          {PROJECTS.map(({ link, src, alt, desc }) => (
+            <Project link={link} src={src} alt={alt} desc={desc} />
           ))}
         </SimpleGrid>
       </Container>
@@ -54,31 +54,37 @@ const PROJECTS = [
   {
     link: "https://github.com/liang799/Vigour",
     src: "/images/vigour.png",
-    alt: "Vigour Project showcase",
+    alt: "Vigour Project",
+    desc: " An Android fitness app that rewards user with crypto after walking for a certain amount of steps",
   },
   {
     link: "https://www.bellcurvehero.com/copyright",
     src: "/images/bellcurvehero.png",
-    alt: "BellCurveHero Internship showcase",
+    alt: "BellCurveHero Internship",
+    desc: "Identified that customers are unclear about BellCurveHero's copyright policy and created a page dedicated to explaining BellCurveHero's copyright policy using Next.js",
   },
   {
     link: "https://github.com/liang799/CSAD-Project",
     src: "/images/tree.png",
-    alt: "CSAD Project showcase",
+    alt: "CSAD Project",
+    desc: "Converted a bootstrap template into a dynamic site using PHP",
   },
   {
-    link: "https://xd.adobe.com/view/0dccdb83-fb9c-49de-bc8d-34652a9a20e9-589f/",
+    link: "https://xd.adobe.com/view/9d1e5b95-4673-45ea-be94-07db8f1edcc0-c84d/",
     src: "/images/poketeams.png",
-    alt: "Hobby Project showcase",
+    alt: "Hobby Project",
+    desc: "Designed a Pokemon Teambuilder app using Adobe XD during my free time",
   },
   {
     link: "https://github.com/liang799/mental-health-sol",
     src: "/images/bot.png",
-    alt: "Discord bot showcase",
+    alt: "MindfulHacks Discord bot",
+    desc: " A python discord bot that sends some appropriate Music videos from YouTube when a keyword from the database is detected",
   },
   {
     link: "https://github.com/liang799/portfolio",
     src: "/images/website.png",
     alt: "This website",
+    desc: "Designed and programmed a portfolio site from the ground up in Next.js, using the experience I have gained through working with BellCurveHero and Client-Server Applications Development module",
   },
 ];
