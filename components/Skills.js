@@ -8,7 +8,7 @@ export default function Skills() {
       <Container maxWidth="container.xl" py={4} px={8}>
         <Heading
           pt={10}
-          id="proj"
+          id="skills"
           pb={8}
           m="1px"
           color="white.bg"
