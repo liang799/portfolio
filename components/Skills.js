@@ -1,23 +1,10 @@
-import React from 'react';
-import {render} from 'react-dom';
-import  mobiscroll from 'path/to/mobiscroll/js/mobiscroll.react.min';
-import {
-  Center,
-  Heading,
-  Container,
-  Image,
-  SimpleGrid,
-  Link,
-  Box,
-  VStack,
-  Flex,
-  Text,
-  Skeleton,
-} from "@chakra-ui/react";
+import React from "react";
+import { SimpleGrid, Heading, Container } from "@chakra-ui/react";
+import Skill from "./Skill";
 
 export default function Skills() {
   return (
-    <Container maxWidth="full" bg="#3D0081" p={0}>
+    <Container maxWidth="full" bg="purple.800" p={0}>
       <Container maxWidth="container.xl" py={4} px={8}>
         <Heading
           pt={10}
@@ -38,11 +25,11 @@ export default function Skills() {
         >
           Skills
         </Heading>
-                 <label>
-                     /* Add Date component  */
-                   Birthday
-                 <mobiscroll.Date placeholder="Please Select..." />
-            </label>
+        <SimpleGrid columns={[1, 2, 3]} spacing="40px">
+          <Skill />
+          <Skill />
+          <Skill />
+        </SimpleGrid>
       </Container>
     </Container>
   );
