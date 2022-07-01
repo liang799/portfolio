@@ -1,6 +1,6 @@
 import { Heading, Box, Stack, Text, Center } from "@chakra-ui/react";
 
-export default function Skill() {
+export default function Skill(props) {
   return (
     <Box
       maxW={"330px"}
@@ -14,15 +14,11 @@ export default function Skill() {
         <Box
           pt={3}
           color="primary.500"
-          className="fas fa-envelope fa-3x"
+          className={props.icon}
         />
-        <Heading as="h3" size="md">
-          React.js
-        </Heading>
+        <Heading as="h3" size="md" textTransform="uppercase">{props.title}</Heading>
         <Center wordWrap="break-word">
-          <Text>I design visually appealing and 
-          easy to use apps and websites 
-          using Adobe XD</Text>
+          <Text>{props.desc}</Text>
         </Center>
       </Stack>
     </Box>
