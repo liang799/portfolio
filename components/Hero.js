@@ -14,9 +14,18 @@ import {
 export default function Hero() {
   return (
     <Container bg="black.main" maxWidth="full">
-      <Container maxWidth="container.xl" py={{base: "0em", sm: "4em", md: "4em", lg: "0em", xl: "4em"}} px={8}>
+      <Container
+        maxWidth="container.xl"
+        py={{ base: "0em", sm: "4em", md: "4em", lg: "0em", xl: "4em" }}
+        px={8}
+        pr={0}
+      >
         <Stack minH={"80vh"} direction={{ base: "column", lg: "row" }}>
-          <Flex flex={1} align={"center"} justify={{base: "center", lg: "left"}}>
+          <Flex
+            flex={1}
+            align={"center"}
+            justify={{ base: "center", lg: "left" }}
+          >
             <Stack
               spacing={1}
               w={"full"}
