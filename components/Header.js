@@ -33,15 +33,15 @@ export default function Header() {
           </Flex>
 
           <Flex
-            display={{ base: "none", md: "flex" }}
+            display={{ base: "none", lg: "flex" }}
             flex={{ base: 1 }}
-            justify={{ base: "auto", md: "right" }}
+            justify={{ base: "auto", lg: "right" }}
           >
             <DesktopNav />
           </Flex>
           <Flex
-            flex={{ base: 1, md: "none" }}
-            display={{ base: "flex", md: "none" }}
+            flex={{ base: 1, lg: "none" }}
+            display={{ base: "flex", lg: "none" }}
             justify="right"
           >
             <IconButton
@@ -102,7 +102,7 @@ const DesktopNav = () => {
 
 const MobileNav = () => {
   return (
-    <Stack bg="gray.800" p={4} display={{ md: "none" }}>
+    <Stack bg="gray.800" p={4} display={{ lg: "none" }}>
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}

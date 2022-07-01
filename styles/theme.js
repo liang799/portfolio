@@ -7,8 +7,8 @@ const theme = extendTheme({
       color: "white.txt",
       lineHeight: "normal",
       fontWeight: "Bold",
-      textTransform: { base: "Capitalize", md: "Uppercase" },
-      fontSize: { base: "3xl", md: "4xl", lg: "5xl" },
+      textTransform: { base: "Capitalize", lg: "Uppercase" },
+      fontSize: { base: "3xl", md: "4xl", lg: "4xl", xl: "5xl" },
     },
     heroXS: {
       // you can also use responsive styles

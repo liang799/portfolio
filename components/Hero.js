@@ -1,5 +1,6 @@
 import {
   Flex,
+  Container,
   Box,
   Heading,
   Image,
@@ -12,61 +13,61 @@ import {
 
 export default function Hero() {
   return (
-    <Stack
-      minH={"80vh"}
-      bg="black.main"
-      direction={{ base: "column", md: "row" }}
-    >
-      <Flex p={8} flex={1} align={"center"} justify={"center"}>
-        <Stack
-          spacing={1}
-          w={"full"}
-          maxW={"lg"}
-          justify={{ base: "center", md: "flex-start" }}
-          align={{ base: "center", md: "flex-start" }}
-        >
-          <Text textStyle="heroXS"> A developer</Text>
-          <Text textStyle="hero" align={{ base: "center", md: "left" }}>
-            That{" "}
-            <Text as="span" color="primary.300">
-              Designs
-            </Text>{" "}
-            and{" "}
-            <Text as="span" color="primary.300">
-              Programs
-            </Text>{" "}
-            Websites
-          </Text>
-          <Stack direction={{ base: "column", md: "row" }} pt={30}>
-            <Box display={{ sm: "inline-block", md: "none" }}>
-              <Image
-                alt={"Hero Image"}
-                objectFit={"contain"}
-                src={"/images/hero.svg"}
-                display="sm"
-              />
-            </Box>
-            <Button
-              colorScheme="primary"
-              size="lg"
-              borderRadius="full"
-              style={{ marginLeft: "0!important" }}
+    <Container bg="black.main" maxWidth="full">
+      <Container maxWidth="container.xl" py={{base: "0em", sm: "4em", md: "4em", lg: "0em", xl: "4em"}} px={8}>
+        <Stack minH={"80vh"} direction={{ base: "column", lg: "row" }}>
+          <Flex flex={1} align={"center"} justify={{base: "center", lg: "left"}}>
+            <Stack
+              spacing={1}
+              w={"full"}
+              maxW={"lg"}
+              justify={{ base: "center", lg: "flex-start" }}
+              align={{ base: "center", lg: "flex-start" }}
             >
-              <Link href="#proj" _hover={{ textDecoration: "none" }}>
-                View My Work
-              </Link>
-            </Button>
-          </Stack>
+              <Text textStyle="heroXS"> A developer</Text>
+              <Text textStyle="hero" align={{ base: "center", lg: "left" }}>
+                That{" "}
+                <Text as="span" color="primary.300">
+                  Designs
+                </Text>{" "}
+                and{" "}
+                <Text as="span" color="primary.300">
+                  Programs
+                </Text>{" "}
+                Websites
+              </Text>
+              <Stack direction={{ base: "column", lg: "row" }} pt={30}>
+                <Box display={{ sm: "inline-block", lg: "none" }}>
+                  <Image
+                    alt={"Hero Image"}
+                    objectFit={"contain"}
+                    src={"/images/hero.svg"}
+                    display="sm"
+                  />
+                </Box>
+                <Button
+                  colorScheme="primary"
+                  size="lg"
+                  borderRadius="full"
+                  style={{ marginLeft: "0!important" }}
+                >
+                  <Link href="#proj" _hover={{ textDecoration: "none" }}>
+                    View My Work
+                  </Link>
+                </Button>
+              </Stack>
+            </Stack>
+          </Flex>
+          <Flex flex={1} display={{ base: "none", lg: "flex" }} pl={10} pr={0}>
+            <Image
+              alt={"Hero Image"}
+              objectFit={"contain"}
+              src={"/images/hero.svg"}
+              p={{ base: "50px", lg: "0px" }}
+            />
+          </Flex>
         </Stack>
-      </Flex>
-      <Flex flex={1} display={{ base: "none", md: "flex" }}>
-        <Image
-          alt={"Hero Image"}
-          objectFit={"contain"}
-          src={"/images/hero.svg"}
-          p={{ base: "50px", md: "0px" }}
-        />
-      </Flex>
-    </Stack>
+      </Container>
+    </Container>
   );
 }
