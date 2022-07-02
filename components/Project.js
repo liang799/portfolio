@@ -1,10 +1,12 @@
+import React from "react"
 import {
-  Stack,
   Image,
+  Box,
   Text,
   Link,
   Button,
   Skeleton,
+  SkeletonText,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -14,25 +16,33 @@ import {
   ModalCloseButton,
   useDisclosure,
 } from "@chakra-ui/react";
-import NImage from "next/image";
+import NextImage from "next/image";
 
 export default function Project(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [isLoaded, setIsLoaded] = React.useState(false);
+
   return (
     <>
-      <Link onClick={onOpen}>
-        <NImage
-          src={props.src}
-          alt={props.alt}
-          loading="lazy"
-          fallback={<Skeleton />}
-          width="400px"
-          height="400px"
-          rounded="xl"
-          objectFit="cover"
-          _hover={{ opacity: 0.5 }}
-        />
-      </Link>
+      <Box
+        borderRadius={5}
+        lineHeight="0"
+        _hover={{ boxShadow: "dark-lg" }}
+        overflow="hidden"
+      >
+        <Link onClick={onOpen}>
+          <NextImage
+            src={props.src}
+            alt={props.alt}
+            loading="lazy"
+            fallback={<Skeleton />}
+            width="400px"
+            height="400px"
+            rounded="xl"
+            objectFit="cover"
+          />
+        </Link>
+      </Box>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
@@ -40,13 +50,16 @@ export default function Project(props) {
           <ModalHeader>{props.alt}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Text>{props.desc}</Text>
-            <Image
-              mt={2}
-              fallback={<Skeleton />}
-              src={props.src}
-              alt={props.alt}
-            />
+            <SkeletonText isLoaded={isLoaded}>{props.desc}</SkeletonText>
+            <Skeleton isLoaded={isLoaded}>
+              <Image
+                mt={2}
+                objectFit={"contain"}
+                layout="responsive"
+                src={props.src}
+                alt={props.alt}
+              />
+            </Skeleton>
           </ModalBody>
 
           <ModalFooter align="left">
@@ -58,6 +71,7 @@ export default function Project(props) {
             <Button variant="ghost" onClick={onClose}>
               Close
             </Button>
+                    <Button onClick={() => setIsLoaded((v) => !v)}>toggle</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
