@@ -1,5 +1,7 @@
 import {
+  Stack,
   Image,
+  Text,
   Link,
   Button,
   Skeleton,
@@ -12,15 +14,17 @@ import {
   ModalCloseButton,
   useDisclosure,
 } from "@chakra-ui/react";
+import NImage from "next/image";
 
 export default function Project(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
       <Link onClick={onOpen}>
-        <Image
+        <NImage
           src={props.src}
           alt={props.alt}
+          loading="lazy"
           fallback={<Skeleton />}
           width="400px"
           height="400px"
@@ -36,7 +40,7 @@ export default function Project(props) {
           <ModalHeader>{props.alt}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            {props.desc}
+            <Text>{props.desc}</Text>
             <Image
               mt={2}
               fallback={<Skeleton />}
