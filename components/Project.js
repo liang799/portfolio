@@ -1,12 +1,9 @@
-import React from "react"
+import React from "react";
 import {
-  Image,
   Box,
-  Text,
   Link,
   Button,
   Skeleton,
-  SkeletonText,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -16,11 +13,10 @@ import {
   ModalCloseButton,
   useDisclosure,
 } from "@chakra-ui/react";
-import NextImage from "next/image";
+import Image from "next/image";
 
 export default function Project(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [isLoaded, setIsLoaded] = React.useState(false);
 
   return (
     <>
@@ -31,7 +27,7 @@ export default function Project(props) {
         overflow="hidden"
       >
         <Link onClick={onOpen}>
-          <NextImage
+          <Image
             src={props.src}
             alt={props.alt}
             loading="lazy"
@@ -50,16 +46,16 @@ export default function Project(props) {
           <ModalHeader>{props.alt}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <SkeletonText isLoaded={isLoaded}>{props.desc}</SkeletonText>
-            <Skeleton isLoaded={isLoaded}>
+            {props.desc}
               <Image
                 mt={2}
                 objectFit={"contain"}
-                layout="responsive"
+                fallback={<Skeleton />}
+                width={400}
+                height={300}
                 src={props.src}
                 alt={props.alt}
               />
-            </Skeleton>
           </ModalBody>
 
           <ModalFooter align="left">
@@ -71,7 +67,6 @@ export default function Project(props) {
             <Button variant="ghost" onClick={onClose}>
               Close
             </Button>
-                    <Button onClick={() => setIsLoaded((v) => !v)}>toggle</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
