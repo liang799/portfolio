@@ -16,11 +16,11 @@ export default function Hero() {
     <Container bg="black.main" maxWidth="full">
       <Container
         maxWidth="container.xl"
-        py={{ base: "0em", sm: "4em", md: "4em", lg: "0em", xl: "4em" }}
+        py={{ base: "1.5em", sm: "4em", md: "0em", lg: "0em", xl: "4em" }}
         px={{base: 8, lg: 12}}
         pr={{ base: "2em", lg: "0em" }}
       >
-        <Stack minH={"80vh"} direction={{ base: "column", lg: "row" }}>
+        <Stack minH={{base: "80vh",  md: "75vh", lg: "80vh"}} direction={{ base: "column", lg: "row" }}>
           <Flex
             flex={1}
             align={"center"}
