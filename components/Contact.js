@@ -15,7 +15,7 @@ import OTHER from "./ContactData";
 
 export default function Contact() {
   return (
-    <Flex maxWidth="full" bg="black.main" p={0} pb={10}>
+    <Flex maxWidth="full" bg="black.main" p={0}>
       <Container
         flex={1}
         maxWidth="container.xl"
@@ -45,7 +45,13 @@ export default function Contact() {
           <Form />
         </Stack>
       </Container>
-      <Flex bg="black.alt" flex={1.2} align="center" justify={"center"}>
+      <Flex
+        bg="black.alt"
+        flex={1.2}
+        align="center"
+        justify={"center"}
+        display={{ base: "none", md: "flex" }}
+      >
         <Stack pl={{ base: 10, lg: 20 }} pr={{ base: 10, lg: 20 }}>
           <Text color="white" pb={5}>
             Like what you see? Have any queries? Feel free to contact me! I am

@@ -25,7 +25,7 @@ export default function Form() {
           <FormLabel>Message</FormLabel>
           <Textarea bg={"black.form"} border={0} h={40} type="message" />
         </FormControl>
-        <Stack pt={2}>
+        <Stack pt={2} pb={10}>
           <Button colorScheme="primary">Send Message</Button>
         </Stack>
       </Stack>

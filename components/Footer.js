@@ -12,7 +12,7 @@ import content from "./ContactData";
 const SocialButton = ({ children, label, href }) => {
   return (
     <chakra.button
-      bg={useColorModeValue("blackAlpha.100", "whiteAlpha.100")}
+      bg= "whiteAlpha.100"
       rounded={"full"}
       w={8}
       h={8}
@@ -35,10 +35,7 @@ const SocialButton = ({ children, label, href }) => {
 
 export default function SmallWithSocial() {
   return (
-    <Box
-      bg={useColorModeValue("gray.50", "gray.900")}
-      color={useColorModeValue("gray.700", "gray.200")}
-    >
+    <Box bg="gray.900" color="gray.200">
       <Container
         id="contact"
         as={Stack}
@@ -50,11 +47,15 @@ export default function SmallWithSocial() {
         align={{ base: "center", md: "center" }}
       >
         <Text>Copyright © 2022 Neoh Tian Pok</Text>
-        <Stack direction={"row"} spacing={6}>
+        <Stack
+          direction={"row"}
+          spacing={6}
+          display={{ base: "inline-block", md: "none" }}
+        >
           {content.map(({ index, icon, href, text }) => (
-          <SocialButton key={index} label={"Email"} href={href}>
-            <Box className={icon} />
-          </SocialButton>
+            <SocialButton key={index} label={"Email"} href={href}>
+              <Box className={icon} />
+            </SocialButton>
           ))}
         </Stack>
       </Container>
