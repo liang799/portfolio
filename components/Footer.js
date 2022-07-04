@@ -7,6 +7,7 @@ import {
   useColorModeValue,
   VisuallyHidden,
 } from "@chakra-ui/react";
+import content from "./ContactData";
 
 const SocialButton = ({ children, label, href }) => {
   return (
@@ -50,15 +51,11 @@ export default function SmallWithSocial() {
       >
         <Text>Copyright © 2022 Neoh Tian Pok</Text>
         <Stack direction={"row"} spacing={6}>
-          <SocialButton label={"Email"} href={"mailto:hello@tianpok.com"}>
-            <Box className="fas fa-envelope" />
+          {content.map(({ index, icon, href, text }) => (
+          <SocialButton key={index} label={"Email"} href={href}>
+            <Box className={icon} />
           </SocialButton>
-          <SocialButton label={"Linkedin"} href={"https://www.linkedin.com/in/tianpok"}>
-            <Box className="fab fa-linkedin-in" />
-          </SocialButton>
-          <SocialButton label={"Github"} href={"https://github.com/liang799"}>
-            <Box className="fab fa-github" />
-          </SocialButton>
+          ))}
         </Stack>
       </Container>
     </Box>

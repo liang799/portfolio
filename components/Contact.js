@@ -11,6 +11,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 import Form from "./Form";
+import OTHER from "./ContactData";
 
 export default function Contact() {
   return (
@@ -63,21 +64,3 @@ export default function Contact() {
     </Flex>
   );
 }
-
-const OTHER = [
-  {
-    icon: "fas fa-envelope",
-    href: "mailto:hello@tianpok.com",
-    text: "hello@tianpok.com",
-  },
-  {
-    icon: "fab fa-linkedin-in",
-    href: "https://www.linkedin.com/in/tianpok",
-    text: "linkedin.com/in/tianpok",
-  },
-  {
-    icon: "fab fa-github",
-    href: "https://github.com/liang799",
-    text: "github.com/liang799",
-  },
-];
