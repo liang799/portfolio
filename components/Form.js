@@ -1,4 +1,5 @@
 import {
+  Textarea,
   FormControl,
   FormLabel,
   FormErrorMessage,
@@ -7,6 +8,7 @@ import {
   Stack,
   Button,
 } from "@chakra-ui/react";
+
 export default function Form() {
   return (
     <Stack>
@@ -21,9 +23,9 @@ export default function Form() {
         </FormControl>
         <FormControl color="white" id="msg">
           <FormLabel>Message</FormLabel>
-          <Input bg={"black.form"} border={0} type="message" />
+          <Textarea bg={"black.form"} border={0} h={40} type="message" />
         </FormControl>
-        <Stack spacing={10}>
+        <Stack pt={2}>
           <Button colorScheme="primary">Send Message</Button>
         </Stack>
       </Stack>

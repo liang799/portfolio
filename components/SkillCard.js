@@ -4,7 +4,7 @@ export default function Skill(props) {
   return (
     <Box
       w={"full"}
-      bg="white"
+      bg="white.bg"
       boxShadow={"2xl"}
       rounded={"md"}
       overflow={"hidden"}
