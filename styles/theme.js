@@ -24,7 +24,7 @@ const theme = extendTheme({
     },
   },
   fonts: {
-    icon: "Rage",
+    icon: "jeanne-moderno-geometrique, sans-serif",
   },
   colors: {
     primary: {

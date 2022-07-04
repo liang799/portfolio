@@ -28,7 +28,7 @@ export default function Header() {
         <Flex minH={"60px"} py={4} align={"center"} px={{base: 8, lg: 12}}>
           <Flex>
             <Text fontSize="2xl" fontFamily={"icon"} color="white" mt="2px">
-              Tian Pok
+              TP
             </Text>
           </Flex>
 
