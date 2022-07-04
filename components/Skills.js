@@ -1,6 +1,6 @@
 import React from "react";
 import { SimpleGrid, Heading, Container } from "@chakra-ui/react";
-import Skill from "./Skill";
+import Skill from "./SkillCard";
 
 export default function Skills() {
   return (
