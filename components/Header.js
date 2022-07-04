@@ -25,7 +25,7 @@ export default function Header() {
   return (
     <Box bg="black.alt">
       <Container maxWidth="container.xl" p={0}>
-        <Flex minH={"60px"} py={4} align={"center"} px={8}>
+        <Flex minH={"60px"} py={4} align={"center"} px={12}>
           <Flex>
             <Text fontSize="2xl" fontFamily={"icon"} color="white" mt="2px">
               Tian Pok

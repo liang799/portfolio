@@ -17,8 +17,8 @@ export default function Hero() {
       <Container
         maxWidth="container.xl"
         py={{ base: "0em", sm: "4em", md: "4em", lg: "0em", xl: "4em" }}
-        px={8}
-        pr={{base: "2em", lg:"0em"}}
+        px={12}
+        pr={{ base: "2em", lg: "0em" }}
       >
         <Stack minH={"80vh"} direction={{ base: "column", lg: "row" }}>
           <Flex

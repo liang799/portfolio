@@ -14,10 +14,10 @@ import {
 } from "@chakra-ui/react";
 import Project from "./Project";
 
-export default function Hero() {
+export default function Portfolio() {
   return (
     <Container maxWidth="full" bg="white.bg" p={0}>
-      <Container maxWidth="container.xl" py={4} px={8}>
+      <Container maxWidth="container.xl" py={4} px={14}>
         <Heading
           pt={10}
           id="proj"
