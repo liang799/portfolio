@@ -3,7 +3,6 @@ import { Heading, Box, Stack, Text, Center } from "@chakra-ui/react";
 export default function Skill(props) {
   return (
     <Box
-      maxW={"330px"}
       w={"full"}
       bg="white"
       boxShadow={"2xl"}

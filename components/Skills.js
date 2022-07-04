@@ -5,7 +5,7 @@ import Skill from "./Skill";
 export default function Skills() {
   return (
     <Container maxWidth="full" bg="purple.800" p={0}>
-      <Container maxWidth="container.xl" py={4} px={14}>
+      <Container maxWidth="container.xl" py={4} px={{base: 8, lg: 14}}>
         <Heading
           pt={10}
           id="skills"

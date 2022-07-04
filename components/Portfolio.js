@@ -17,7 +17,7 @@ import Project from "./Project";
 export default function Portfolio() {
   return (
     <Container maxWidth="full" bg="white.bg" p={0}>
-      <Container maxWidth="container.xl" py={4} px={14}>
+      <Container maxWidth="container.xl" py={4} px={{base:8, lg: 14}}>
         <Heading
           pt={10}
           id="proj"
