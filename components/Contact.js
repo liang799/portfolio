@@ -4,14 +4,13 @@ import ContactAlt from "./ContactAlt";
 
 export default function Contact() {
   return (
-    <Flex maxWidth="full" bg="black.main" p={0}>
+    <Container maxWidth="full" bg="black.main" p={0}>
       <Container
-        flex={1}
         maxWidth="container.xl"
-        py={4}
         px={{ base: 8, lg: 14 }}
       >
-        <Stack>
+        <Flex>
+        <Stack flex={1}>
           <Heading
             pt={10}
             id="skills"
@@ -33,8 +32,9 @@ export default function Contact() {
           </Heading>
           <Form />
         </Stack>
+      <ContactAlt/>
+        </Flex>
       </Container>
-      <ContactAlt flex={1}/>
-    </Flex>
+    </Container>
   );
 }

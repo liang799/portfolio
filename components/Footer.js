@@ -43,7 +43,7 @@ export default function SmallWithSocial() {
         py={4}
         direction={{ base: "column", md: "row" }}
         spacing={4}
-        justify={{ base: "center", md: "space-between" }}
+        justify={{ base: "center", md: "center" }}
         align={{ base: "center", md: "center" }}
       >
         <Text>Copyright © 2022 Neoh Tian Pok</Text>
