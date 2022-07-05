@@ -58,7 +58,7 @@ export default function Contact() {
             usually active on email and LinkedIn.
           </Text>
           {OTHER.map(({ index, icon, href, text }) => (
-            <HStack index={index} spacing={5}>
+            <HStack key={index} spacing={5}>
               <Box color="white" className={icon} />
               <Link color="white" href={href} isExternal>
                 {text}

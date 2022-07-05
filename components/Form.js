@@ -29,7 +29,7 @@ export default function ContactForm() {
             <Link color="primary.200" href="mailto: hello@tianpok.com">
               hello@tianpok.com
             </Link>
-            . I'll try to get back to you within 24 hours.
+            . I&apos;ll try to get back to you within 24 hours.
           </Text>
           <Text color="white">
             In the meantime, you can click the link below to find out more about
