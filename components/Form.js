@@ -11,17 +11,14 @@ import {
   Stack,
   Button,
 } from "@chakra-ui/react";
-import { useForm, ValidationError } from "@formspree/react";
 import React from "react";
-import { Formik } from "formik";
+import { Formik, Form, Field } from "formik";
 import Submission from "./Submission.js";
 
 export default function ContactForm() {
-  const [state, handleSubmit] = useForm("xbjwvlql");
-
-  if (state.succeeded) {
-    return <Submission />;
-  }
+  // if (state.succeeded) {
+  //   return <Submission />;
+  // }
 
   function validateName(value) {
     let error;
@@ -31,58 +28,90 @@ export default function ContactForm() {
     return error;
   }
 
+  const re =
+    /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+  function validateEmail(value) {
+    let error;
+    if (!value) {
+      error = "Email is required";
+    } else if (!value.match(re)) {
+      error = "Please enter a valid email";
+    }
+    return error;
+  }
+
+  function validateMsg(value) {
+    let error;
+    if (!value) {
+      error = "Message cannot be empty";
+    }
+    return error;
+  }
+
   return (
     <Formik
-      initialValues={{ name: "Sasuke" }}
+      initialValues={{ name: "", email: "", msg: "" }}
       onSubmit={(values, actions) => {
         // do sql here
+        setTimeout(() => {
+          alert(JSON.stringify(values, null, 2));
+          actions.setSubmitting(false);
+        }, 1000);
       }}
     >
       {(props) => (
-        <Stack spacing={4}>
-          <Field name="name" validate={validateName}>
-            {({ field, form }) => (
-              <FormControl color="white" isInvalid={form.errors.name && form.touched.name}>
-                <FormLabel> Name</FormLabel>
-                <Input bg={"black.form"} border={0} {..field} />
-                <FormErrorMessage>{form.errors.name}</FormErrorMessage>
-              </FormControl>
-            )}
-          </Field>
+        <Form>
+          <Stack spacing={4}>
+            <Field name="name" validate={validateName}>
+              {({ field, form }) => (
+                <FormControl
+                  color="white"
+                  isInvalid={form.errors.name && form.touched.name}
+                >
+                  <FormLabel> Name</FormLabel>
+                  <Input bg={"black.form"} border={0} {...field} />
+                  <FormErrorMessage>{form.errors.name}</FormErrorMessage>
+                </FormControl>
+              )}
+            </Field>
 
-          <FormControl color="white" id="email">
-            <FormLabel>Email</FormLabel>
-            <Input bg={"black.form"} border={0} type="email" name="email" />
-          </FormControl>
-          <ValidationError prefix="Email" field="email" errors={state.errors} />
+            <Field name="email" validate={validateEmail}>
+              {({ field, form }) => (
+                <FormControl
+                  color="white"
+                  isInvalid={form.errors.email && form.touched.email}
+                >
+                  <FormLabel>Email</FormLabel>
+                  <Input bg={"black.form"} border={0} {...field} />
+                  <FormErrorMessage>{form.errors.email}</FormErrorMessage>
+                </FormControl>
+              )}
+            </Field>
 
-          <FormControl color="white" id="message">
-            <FormLabel>Message</FormLabel>
-            <Textarea
-              bg={"black.form"}
-              border={0}
-              h={40}
-              type="message"
-              name="message"
-            />
-          </FormControl>
-          <ValidationError
-            prefix="Message"
-            field="message"
-            errors={state.errors}
-          />
+            <Field name="msg" validate={validateMsg}>
+              {({ field, form }) => (
+                <FormControl
+                  color="white"
+                  isInvalid={form.errors.msg && form.touched.msg}
+                >
+                  <FormLabel>Message</FormLabel>
+                  <Textarea bg={"black.form"} border={0} h={40} {...field} />
+                  <FormErrorMessage>{form.errors.msg}</FormErrorMessage>
+                </FormControl>
+              )}
+            </Field>
 
-          <Stack pt={2} pb={10}>
-            <Button
-              colorScheme="primary"
-              type="submit"
-              isLoading={state.submitting}
-            >
-              Send Message
-            </Button>
+            <Stack pt={2} pb={10}>
+              <Button
+                colorScheme="primary"
+                type="submit"
+                isLoading={props.isSubmitting}
+              >
+                Send Message
+              </Button>
+            </Stack>
           </Stack>
-          <ValidationError errors={state.errors} />
-        </Stack>
+        </Form>
       )}
     </Formik>
   );
