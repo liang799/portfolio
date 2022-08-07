@@ -13,55 +13,42 @@ import {
 } from "@chakra-ui/react";
 import { useForm, ValidationError } from "@formspree/react";
 import React from "react";
+import { Formik } from "formik";
+import Submission from "./Submission.js";
 
 export default function ContactForm() {
   const [state, handleSubmit] = useForm("xbjwvlql");
 
   if (state.succeeded) {
-    return (
-      <Stack spacing={6} pb={7}>
-        <Heading size="md" color="white">
-          Thank You!
-        </Heading>
-        <Stack spacing={4}>
-          <Text color="white">
-            An email has been sent to{" "}
-            <Link color="primary.200" href="mailto: hello@tianpok.com">
-              hello@tianpok.com
-            </Link>
-            . I&apos;ll try to get back to you within 24 hours.
-          </Text>
-          <Text color="white">
-            In the meantime, you can click the link below to find out more about
-            this website!
-          </Text>
-        </Stack>
-        <Button
-          colorScheme="primary"
-          size="lg"
-          style={{ marginLeft: "0!important" }}
-        >
-          <Link
-            href="https://github.com/liang799/portfolio"
-            _hover={{ textDecoration: "none" }}
-            isExternal
-          >
-            Source Code
-          </Link>
-        </Button>
-      </Stack>
-    );
+    return <Submission />;
+  }
+
+  function validateName(value) {
+    let error;
+    if (!value) {
+      error = "Name is required";
+    }
+    return error;
   }
 
   return (
-    <Stack>
-      <form onSubmit={handleSubmit}>
+    <Formik
+      initialValues={{ name: "Sasuke" }}
+      onSubmit={(values, actions) => {
+        // do sql here
+      }}
+    >
+      {(props) => (
         <Stack spacing={4}>
-          <FormControl color="white" id="name">
-            <FormLabel> Name</FormLabel>
-            <Input bg={"black.form"} border={0} name="name" />
-          </FormControl>
-          <ValidationError prefix="Name" field="name" errors={state.errors} />
+          <Field name="name" validate={validateName}>
+            {({ field, form }) => (
+              <FormControl color="white" isInvalid={form.errors.name && form.touched.name}>
+                <FormLabel> Name</FormLabel>
+                <Input bg={"black.form"} border={0} {..field} />
+                <FormErrorMessage>{form.errors.name}</FormErrorMessage>
+              </FormControl>
+            )}
+          </Field>
 
           <FormControl color="white" id="email">
             <FormLabel>Email</FormLabel>
@@ -96,7 +83,7 @@ export default function ContactForm() {
           </Stack>
           <ValidationError errors={state.errors} />
         </Stack>
-      </form>
-    </Stack>
+      )}
+    </Formik>
   );
 }
