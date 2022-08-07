@@ -11,18 +11,19 @@ import {
   Stack,
   Button,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Formik, Form, Field } from "formik";
 import Submission from "./Submission.js";
 
 export default function ContactForm() {
-  // if (state.succeeded) {
-  //   return <Submission />;
-  // }
+  const [isSubmit, setSubmit] = useState(false);
+  if (isSubmit) {
+    return <Submission />;
+  }
 
   function validateName(value) {
     let error;
-    if (!value) {
+    if (!value.trim()) {
       error = "Name is required";
     }
     return error;
@@ -32,7 +33,7 @@ export default function ContactForm() {
     /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
   function validateEmail(value) {
     let error;
-    if (!value) {
+    if (!value.trim()) {
       error = "Email is required";
     } else if (!value.match(re)) {
       error = "Please enter a valid email";
@@ -42,7 +43,7 @@ export default function ContactForm() {
 
   function validateMsg(value) {
     let error;
-    if (!value) {
+    if (!value.trim()) {
       error = "Message cannot be empty";
     }
     return error;
@@ -53,6 +54,7 @@ export default function ContactForm() {
       initialValues={{ name: "", email: "", msg: "" }}
       onSubmit={(values, actions) => {
         // do sql here
+        setSubmit(({ isSubmit }) => ({ isSubmit: !isSubmit }));
         setTimeout(() => {
           alert(JSON.stringify(values, null, 2));
           actions.setSubmitting(false);
