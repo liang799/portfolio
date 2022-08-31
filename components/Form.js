@@ -19,8 +19,7 @@ import { supabase } from "../utils/supabaseClient";
 
 export default function ContactForm() {
   const [loading, setLoading] = useState(false);
-  const [isSubmit, setSubmit] = useState(false);
-  const [isError, setError] = useState(false);
+  // const [isSubmit, setSubmit] = useState(false);
 
   // if (isSubmit && !loading) {
   //   return <Submission />;
@@ -54,40 +53,36 @@ export default function ContactForm() {
     return error;
   }
 
-  const insertData = async (values) => {
-    const { data, error } = await supabase.from("contact").insert(values);
-    console.log(data);
-    console.log(error);
-    if (error === null)
-      setError(true);
-    setLoading(false);
-  };
-
   const toast = useToast();
+
+  const insertData = async (values) => {
+    setLoading(true);
+    const { error } = await supabase.from("contact").insert(values, { returning: 'minimal' });
+    console.log(error);
+    // setSubmit(({ isSubmit }) => ({ isSubmit: !isSubmit }));
+    setLoading(false);
+    if (!error) {
+      toast({
+        title: "Your message has been sent!",
+        position: "top-right",
+        status: "success",
+        isClosable: true,
+      });
+    } else {
+      toast({
+        title: "There was an error processing your request",
+        position: "top-right",
+        status: "error",
+        isClosable: true,
+      });
+    }
+  };
 
   return (
     <Formik
       initialValues={{ name: "", email: "", msg: "" }}
       onSubmit={(values, actions) => {
-        setLoading(true);
         insertData(values);
-        setSubmit(({ isSubmit }) => ({ isSubmit: !isSubmit }));
-        if (!isError) {
-          toast({
-            title: "Your message has been sent!",
-            position: "top-right",
-            status: "success",
-            isClosable: true,
-          });
-        } else {
-          toast({
-            title: "There was an error processing your request",
-            position: "top-right",
-            status: "error",
-            isClosable: true,
-          });
-          setError(false);
-        }
       }}
     >
       {(props) => (
