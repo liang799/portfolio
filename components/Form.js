@@ -14,12 +14,15 @@ import {
 import React, { useState, useEffect } from "react";
 import { Formik, Form, Field } from "formik";
 import Submission from "./Submission.js";
+import { supabase } from "../utils/supabaseClient";
 
 export default function ContactForm() {
+  const [loading, setLoading] = useState(false);
   const [isSubmit, setSubmit] = useState(false);
-  if (isSubmit) {
-    return <Submission />;
-  }
+
+  // if (isSubmit) {
+  //   return <Submission />;
+  // }
 
   function validateName(value) {
     let error;
@@ -49,16 +52,20 @@ export default function ContactForm() {
     return error;
   }
 
+  const insertData = async (values) => {
+    const { data, error } = await supabase.from("contact").insert(values);
+    console.log(data);
+    console.log(error);
+    setLoading(false);
+  };
+
   return (
     <Formik
       initialValues={{ name: "", email: "", msg: "" }}
       onSubmit={(values, actions) => {
-        // do sql here
+        setLoading(true);
+        insertData(values);
         setSubmit(({ isSubmit }) => ({ isSubmit: !isSubmit }));
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          actions.setSubmitting(false);
-        }, 1000);
       }}
     >
       {(props) => (
@@ -104,11 +111,7 @@ export default function ContactForm() {
             </Field>
 
             <Stack pt={2} pb={10}>
-              <Button
-                colorScheme="primary"
-                type="submit"
-                isLoading={props.isSubmitting}
-              >
+              <Button colorScheme="primary" type="submit" isLoading={loading}>
                 Send Message
               </Button>
             </Stack>
