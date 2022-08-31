@@ -1,4 +1,5 @@
 import {
+  useToast,
   Heading,
   Link,
   Text,
@@ -19,8 +20,9 @@ import { supabase } from "../utils/supabaseClient";
 export default function ContactForm() {
   const [loading, setLoading] = useState(false);
   const [isSubmit, setSubmit] = useState(false);
+  const [isError, setError] = useState(false);
 
-  // if (isSubmit) {
+  // if (isSubmit && !loading) {
   //   return <Submission />;
   // }
 
@@ -56,8 +58,12 @@ export default function ContactForm() {
     const { data, error } = await supabase.from("contact").insert(values);
     console.log(data);
     console.log(error);
+    if (error === null)
+      setError(true);
     setLoading(false);
   };
+
+  const toast = useToast();
 
   return (
     <Formik
@@ -66,6 +72,22 @@ export default function ContactForm() {
         setLoading(true);
         insertData(values);
         setSubmit(({ isSubmit }) => ({ isSubmit: !isSubmit }));
+        if (!isError) {
+          toast({
+            title: "Your message has been sent!",
+            position: "top-right",
+            status: "success",
+            isClosable: true,
+          });
+        } else {
+          toast({
+            title: "There was an error processing your request",
+            position: "top-right",
+            status: "error",
+            isClosable: true,
+          });
+          setError(false);
+        }
       }}
     >
       {(props) => (
