@@ -25,7 +25,7 @@ export default function Hero() {
         px={{ base: 8, lg: 12 }}
         pr={{ base: "2em", lg: "0em" }}
       >
-        <Stack minH={{ base: "80vh", md: "75vh", lg: "80vh" }} direction={{ base: "column", lg: "row" }}>
+        <Stack minH={{ base: "80vh", md: "75vh", lg: "80vh" }} direction={{ base: "column", lg: "row" }} pt={{base: "70px", md: "100px", lg: "60px"}} pb={{base: "20px", md: "40px", lg: 0}}>
           <Flex
             flex={1}
             align={"center"}
