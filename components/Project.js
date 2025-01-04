@@ -32,8 +32,8 @@ export default function Project(props) {
             alt={props.alt}
             loading="lazy"
             fallback={<Skeleton />}
-            width="400px"
-            height="400px"
+            width={400}
+            height={400}
             rounded="xl"
             objectFit="cover"
           />
