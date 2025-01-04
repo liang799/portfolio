@@ -87,9 +87,6 @@ export default function Header() {
 }
 
 const DesktopNav = ({ navItems }) => {
-  const color = "gray.400";
-  const linkHoverColor = "white";
-
   return (
     <Stack direction={"row"} spacing={4}>
       {navItems.map((navItem) => (
