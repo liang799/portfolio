@@ -14,9 +14,9 @@ import {
 } from "@chakra-ui/react";
 import Project from "./Project";
 
-export default function Portfolio() {
+export default function Portfolio({ ...props }) {
   return (
-    <Container maxWidth="full" bg="white.bg" p={0}>
+    <Container maxWidth="full" bg="white.bg" p={0} ref={props.ref}>
       <Container maxWidth="container.xl" py={4} px={{base:8, lg: 14}}>
         <Heading
           pt={10}
