@@ -2,10 +2,10 @@ import React from "react";
 import { SimpleGrid, Heading, Container } from "@chakra-ui/react";
 import Skill from "./SkillCard";
 
-export default function Skills() {
+export default function Skills({ ...props }) {
   return (
-    <Container maxWidth="full" bg="purple.800" p={0}>
-      <Container maxWidth="container.xl" py={4} px={{base: 8, lg: 14}}>
+    <Container maxWidth="full" bg="purple.800" p={0} ref={props.ref}>
+      <Container maxWidth="container.xl" py={4} px={{ base: 8, lg: 14 }}>
         <Heading
           pt={10}
           id="skills"

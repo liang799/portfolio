@@ -9,14 +9,23 @@ import { createContext, useRef } from "react";
 export const ScrollToRefContext = createContext();
 
 export default function Home() {
-  const ref = useRef(null);
+  const portfolioRef = useRef(null);
+  const skillsRef = useRef(null);
+  const contactRef = useRef(null);
+
+  const scrollables = {
+    portfolio: portfolioRef,
+    skills: skillsRef,
+    contact: contactRef
+  }
+
   return (
-    <ScrollToRefContext.Provider value={ref}>
+    <ScrollToRefContext.Provider value={scrollables}>
       <Header />
       <Hero />
-      <Portfolio ref={ref} />
-      <Skills />
-      <Contact />
+      <Portfolio ref={portfolioRef} />
+      <Skills ref={skillsRef} />
+      <Contact ref={contactRef} />
       <Footer />
     </ScrollToRefContext.Provider>
   );

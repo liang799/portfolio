@@ -15,17 +15,34 @@ import {
   HamburgerIcon,
   CloseIcon,
   ChevronDownIcon,
-  ChevronRightIcon,
 } from "@chakra-ui/icons";
-import theme from "../styles/theme";
+import { useContext } from "react";
+import { ScrollToRefContext } from "../pages";
+import { smoothScrollToRef } from "../utils/scroll";
 
 export default function Header() {
   const { isOpen, onToggle } = useDisclosure();
+  const scrollables = useContext(ScrollToRefContext);
+
+  const NAV_ITEMS = [
+    {
+      label: "Projects",
+      scrollToSection: () => smoothScrollToRef(scrollables.portfolio)
+    },
+    {
+      label: "Skills",
+      scrollToSection: () => smoothScrollToRef(scrollables.skills)
+    },
+    {
+      label: "Contact",
+      scrollToSection: () => smoothScrollToRef(scrollables.contact)
+    },
+  ];
 
   return (
     <Box bg="black.alt">
       <Container maxWidth="container.xl" p={0}>
-        <Flex minH={"60px"} py={4} align={"center"} px={{base: 8, lg: 12}}>
+        <Flex minH={"60px"} py={4} align={"center"} px={{ base: 8, lg: 12 }}>
           <Flex>
             <Text fontSize="2xl" fontFamily={"icon"} color="white" mt="2px">
               TP
@@ -37,7 +54,7 @@ export default function Header() {
             flex={{ base: 1 }}
             justify={{ base: "auto", lg: "right" }}
           >
-            <DesktopNav />
+            <DesktopNav navItems={NAV_ITEMS} />
           </Flex>
           <Flex
             flex={{ base: 1, lg: "none" }}
@@ -66,44 +83,38 @@ export default function Header() {
       </Container>
 
       <Collapse in={isOpen} animateOpacity>
-        <MobileNav />
+        <MobileNav navItems={NAV_ITEMS} />
       </Collapse>
     </Box>
   );
 }
 
-const DesktopNav = () => {
-  const linkColor = "gray.400";
+const DesktopNav = ({ navItems }) => {
+  const color = "gray.400";
   const linkHoverColor = "white";
 
   return (
     <Stack direction={"row"} spacing={4}>
-      {NAV_ITEMS.map((navItem) => (
+      {navItems.map((navItem) => (
         <Box key={navItem.label}>
-          <Link
+          <Button
+            varaint="ghost"
+            colorScheme="black"
             p={2}
-            href={navItem.href ?? "#"}
-            scroll={true}
-            fontSize={"sm"}
-            fontWeight={500}
-            color={linkColor}
-            _hover={{
-              textDecoration: "none",
-              color: linkHoverColor,
-            }}
+            onClick={navItem.scrollToSection}
           >
             {navItem.label}
-          </Link>
+          </Button>
         </Box>
       ))}
     </Stack>
   );
 };
 
-const MobileNav = () => {
+const MobileNav = ({ navItems }) => {
   return (
     <Stack bg="gray.800" p={4} display={{ lg: "none" }}>
-      {NAV_ITEMS.map((navItem) => (
+      {navItems.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
     </Stack>
@@ -159,18 +170,3 @@ const MobileNavItem = ({ label, children, href }) => {
     </Stack>
   );
 };
-
-const NAV_ITEMS = [
-  {
-    label: "Projects",
-    href: "#proj",
-  },
-  {
-    label: "Skills",
-    href: "#skills",
-  },
-  {
-    label: "Contact",
-    href: "#contact",
-  },
-];
