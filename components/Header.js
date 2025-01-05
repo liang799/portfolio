@@ -13,13 +13,35 @@ import {
   HamburgerIcon,
   CloseIcon,
 } from "@chakra-ui/icons";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { ScrollToRefContext } from "../pages";
 import { smoothScrollToRef } from "../utils/scroll";
 
 export default function Header() {
   const { isOpen, onToggle } = useDisclosure();
   const scrollables = useContext(ScrollToRefContext);
+  const [showHeader, setShowHeader] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  const controlNavbar = () => {
+    if (typeof window !== 'undefined') {
+      if (window.scrollY > lastScrollY) {
+        // Scrolling down
+        setShowHeader(false);
+      } else {
+        // Scrolling up
+        setShowHeader(true);
+      }
+      setLastScrollY(window.scrollY);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', controlNavbar);
+    return () => {
+      window.removeEventListener('scroll', controlNavbar);
+    };
+  }, [lastScrollY]);
 
   const NAV_ITEMS = [
     {
@@ -37,65 +59,65 @@ export default function Header() {
   ];
 
   return (
-    <Box>
-      <Flex
-        bg="black.alt"
-        as={'header'}
-        pos="fixed"
-        top="0"
-        w={'full'}
-        minH={'60px'}
-        boxShadow={'sm'}
-        zIndex="999"
-        justify={'center'}
-        css={{
-          opacity: 0.7
-        }}>
-        <Container maxWidth="container.xl" p={0}>
-          <Flex minH={"60px"} py={4} align={"center"} px={{ base: 8, lg: 12 }}>
-            <Flex>
-              <Text fontSize="2xl" fontFamily={"icon"} color="white" mt="2px">
-                TP
-              </Text>
-            </Flex>
-
-            <Flex
-              display={{ base: "none", lg: "flex" }}
-              flex={{ base: 1 }}
-              justify={{ base: "auto", lg: "right" }}
-            >
-              <DesktopNav navItems={NAV_ITEMS} />
-            </Flex>
-            <Flex
-              flex={{ base: 1, lg: "none" }}
-              display={{ base: "flex", lg: "none" }}
-              justify="right"
-            >
-              <IconButton
-                onClick={onToggle}
-                color="white"
-                icon={
-                  isOpen ? (
-                    <CloseIcon w={3} h={3} />
-                  ) : (
-                    <HamburgerIcon w={5} h={5} />
-                  )
-                }
-                variant={"ghost"}
-                aria-label={"Toggle Navigation"}
-                _hover={{ bg: "black.alt" }}
-                _active={{
-                  bg: "black.alt",
-                }}
-              />
-            </Flex>
+    <Flex
+      bg="black.alt"
+      as={'header'}
+      pos="fixed"
+      top="0"
+      w={'full'}
+      minH={'60px'}
+      boxShadow={'sm'}
+      zIndex="999"
+      justify={'center'}
+      css={{
+        transition: 'transform 0.3s ease-in-out',
+        transform: showHeader ? 'translateY(0)' : 'translateY(-100%)',
+        opacity: 0.7
+      }}>
+      <Container maxWidth="container.xl" p={0}>
+        <Flex minH={"60px"} py={4} align={"center"} px={{ base: 8, lg: 12 }}>
+          <Flex>
+            <Text fontSize="2xl" fontFamily={"icon"} color="white" mt="2px">
+              TP
+            </Text>
           </Flex>
-          <Collapse in={isOpen} animateOpacity>
-            <MobileNav navItems={NAV_ITEMS} onToggle={onToggle} />
-          </Collapse>
-        </Container>
-      </Flex>
-    </Box>
+
+          <Flex
+            display={{ base: "none", lg: "flex" }}
+            flex={{ base: 1 }}
+            justify={{ base: "auto", lg: "right" }}
+          >
+            <DesktopNav navItems={NAV_ITEMS} />
+          </Flex>
+          <Flex
+            flex={{ base: 1, lg: "none" }}
+            display={{ base: "flex", lg: "none" }}
+            justify="right"
+          >
+            <IconButton
+              onClick={onToggle}
+              color="white"
+              icon={
+                isOpen ? (
+                  <CloseIcon w={3} h={3} />
+                ) : (
+                  <HamburgerIcon w={5} h={5} />
+                )
+              }
+              variant={"ghost"}
+              aria-label={"Toggle Navigation"}
+              _hover={{ bg: "black.alt" }}
+              _active={{
+                bg: "black.alt",
+              }}
+            />
+          </Flex>
+        </Flex>
+        <Collapse in={isOpen} animateOpacity>
+          <MobileNav navItems={NAV_ITEMS} onToggle={onToggle} />
+        </Collapse>
+      </Container>
+    </Flex>
   );
 }
 
