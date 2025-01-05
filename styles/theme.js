@@ -42,6 +42,7 @@ const theme = extendTheme({
     black: {
       main: "#181818",
       alt: "#151F24",
+      blur: "rgb(21,31,36,0.3)",
       form: "#303030",
       pure: "#000000",
     },

@@ -60,7 +60,7 @@ export default function Header() {
 
   return (
     <Flex
-      bg="black.alt"
+      bg="black.blur"
       as={'header'}
       pos="fixed"
       top="0"
@@ -69,12 +69,12 @@ export default function Header() {
       boxShadow={'sm'}
       zIndex="999"
       justify={'center'}
+      backdropFilter="blur(5px)" 
       css={{
         transition: 'transform 0.3s ease-in-out',
         transform: showHeader ? 'translateY(0)' : 'translateY(-100%)',
-        opacity: 0.7
       }}>
-      <Container maxWidth="container.xl" p={0}>
+      <Container maxWidth="container.xl" p={0} >
         <Flex minH={"60px"} py={4} align={"center"} px={{ base: 8, lg: 12 }}>
           <Flex>
             <Text fontSize="2xl" fontFamily={"icon"} color="white" mt="2px">
@@ -143,12 +143,11 @@ const DesktopNav = ({ navItems }) => {
 const MobileNav = ({ navItems, onToggle }) => {
   return (
     <Stack
-      p={4}
+      px={8}
+      py={4}
       display={{ lg: "none" }}
       w={'full'}
-      css={{
-        backdropFilter: 'saturate(180%) blur(5px)',
-      }}>
+    >
       {navItems.map((navItem) => (
         <MobileNavItem
           key={navItem.label}
