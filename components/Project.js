@@ -3,7 +3,6 @@ import {
   Box,
   Link,
   Button,
-  Skeleton,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -30,7 +29,6 @@ export default function Project(props) {
           <CldImage
             src={props.src}
             alt={props.alt}
-            loading="lazy"
             width={400}
             height={400}
             rounded="xl"
@@ -50,6 +48,7 @@ export default function Project(props) {
               <CldImage
                 objectFit={"contain"}
                 width={400}
+                loading="lazy"
                 height={300}
                 src={props.src}
                 alt={props.alt}
