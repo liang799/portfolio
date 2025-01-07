@@ -50,6 +50,7 @@ export default function Portfolio({ ...props }) {
   );
 }
 
+/* Ensure image ratio is 3:2 */
 const PROJECTS = [
   {
     link: "https://github.com/liang799/Vigour",
@@ -82,9 +83,9 @@ const PROJECTS = [
     desc: " A python discord bot that sends some appropriate Music videos from YouTube when a keyword from the database is detected",
   },
   {
-    link: "https://github.com/liang799/portfolio",
-    src: "website_lf7kzz",
-    alt: "This website",
-    desc: "Designed and programmed a portfolio site from the ground up in Next.js, using the experience I have gained through working with BellCurveHero and Client-Server Applications Development module",
+    link: "https://onesystemstech.com/blog",
+    src: "ost-freelance-2_u4ri8d",
+    alt: "OST Freelance Project",
+    desc: "As a freelancer, one of my clients was Onesystem Technologies PTE LTD. I was tasked with creating a blog system and product promotional page",
   },
 ];
