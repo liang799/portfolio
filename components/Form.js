@@ -20,6 +20,7 @@ export default function ContactForm() {
 
   const onSubmit = async (values, actions) => {
     setStatus("submitting");
+    values.access_key = "a56c45ff-43f1-4314-9a3c-bc11c3302ab8";
     axios.post("https://api.web3forms.com/submit", values)
         .then(res => setStatus("success"))
         .catch(err => {
@@ -94,8 +95,6 @@ export default function ContactForm() {
                   </FormControl>
               )}
             </Field>
-
-            <input type="hidden" name="access_key" value="a56c45ff-43f1-4314-9a3c-bc11c3302ab8"/>
 
             <Stack pt={2} pb={10}>
               <Button colorScheme="primary" type="submit" isLoading={isLoading}>
