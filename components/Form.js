@@ -5,79 +5,85 @@ import {
   FormLabel,
   FormErrorMessage,
   Input,
+  Textarea,
   Stack
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { Formik, Form, Field } from "formik";
 
 export default function ContactForm() {
-  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [status, setStatus] = useState('idle'); // 'idle', 'submitting', or 'success'
+  const isLoading = status === 'submitting';
 
   function validateName(value) {
-    let error;
     if (!value.trim()) {
-      error = "Name is required";
+      return "Name is required";
     }
-    return error;
   }
 
-  const re =
-    /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
   function validateEmail(value) {
-    let error;
+    const re =
+        /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     if (!value.trim()) {
-      error = "Email is required";
-    } else if (!value.match(re)) {
-      error = "Please enter a valid email";
+      return "Email is required";
     }
-    return error;
+    if (!value.match(re)) {
+      return "Please enter a valid email";
+    }
   }
 
   function validateMsg(value) {
-    let error;
     if (!value.trim()) {
-      error = "Message cannot be empty";
+      return "Message cannot be empty";
     }
-    return error;
   }
 
   const toast = useToast();
 
   const insertData = async (values) => {
-    setLoading(true);
+    setStatus("submitting");
     const formData = new FormData();
     for (const key in values) {
       if (values.hasOwnProperty(key)) {
         formData.append(key, values[key]);
       }
     }
-    formData.append("access_key", "a56c45ff-43f1-4314-9a3c-bc11c3302ab8");
-
+    formData.append("access_key", "");
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
       body: formData
     });
-
     const data = await response.json();
 
     if (data.success) {
-      toast({
-        title: "Your message has been sent!",
-        position: "top-right",
-        status: "success",
-        isClosable: true,
-      });
+      setStatus("success");
     } else {
-      console.log("Error", data);
-      toast({
-        title: "There was an error processing your request",
-        position: "top-right",
-        status: "error",
-        isClosable: true,
-      });
+      setError(data);
+      setStatus("idle");
     }
-    setLoading(false)
   };
+
+  if (status === 'success') {
+    toast({
+      title: "Your message has been sent!",
+      position: "top-right",
+      status: "success",
+      isClosable: true,
+    });
+    setStatus("idle")
+  }
+
+  if (error) {
+    toast({
+      title: "There was an error processing your request",
+      position: "top-right",
+      status: "error",
+      isClosable: true,
+    });
+    setError(null);
+  }
+
 
   return (
     <Formik
@@ -129,7 +135,7 @@ export default function ContactForm() {
             </Field>
 
             <Stack pt={2} pb={10}>
-              <Button colorScheme="primary" type="submit" isLoading={loading}>
+              <Button colorScheme="primary" type="submit" isLoading={isLoading}>
                 Send Message
               </Button>
             </Stack>
