@@ -12,7 +12,6 @@
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "@formspree/react": "^2.3.0",
-    "@supabase/supabase-js": "^1.35.6",
     "formik": "^2.2.9",
     "framer-motion": "^6.3.15",
     "next": "^15.1.3",

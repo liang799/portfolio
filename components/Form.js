@@ -1,29 +1,17 @@
 import {
   useToast,
-  Heading,
-  Link,
-  Text,
-  Textarea,
+  Button,
   FormControl,
   FormLabel,
   FormErrorMessage,
-  FormHelperText,
   Input,
-  Stack,
-  Button,
+  Stack
 } from "@chakra-ui/react";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Formik, Form, Field } from "formik";
-import Submission from "./Submission.js";
-import { supabase } from "../utils/supabaseClient";
 
 export default function ContactForm() {
   const [loading, setLoading] = useState(false);
-  // const [isSubmit, setSubmit] = useState(false);
-
-  // if (isSubmit && !loading) {
-  //   return <Submission />;
-  // }
 
   function validateName(value) {
     let error;
@@ -57,11 +45,22 @@ export default function ContactForm() {
 
   const insertData = async (values) => {
     setLoading(true);
-    const { error } = await supabase.from("contact").insert(values, { returning: 'minimal' });
-    console.log(error);
-    // setSubmit(({ isSubmit }) => ({ isSubmit: !isSubmit }));
-    setLoading(false);
-    if (!error) {
+    const formData = new FormData();
+    for (const key in values) {
+      if (values.hasOwnProperty(key)) {
+        formData.append(key, values[key]);
+      }
+    }
+    formData.append("access_key", "a56c45ff-43f1-4314-9a3c-bc11c3302ab8");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
       toast({
         title: "Your message has been sent!",
         position: "top-right",
@@ -69,6 +68,7 @@ export default function ContactForm() {
         isClosable: true,
       });
     } else {
+      console.log("Error", data);
       toast({
         title: "There was an error processing your request",
         position: "top-right",
@@ -76,6 +76,7 @@ export default function ContactForm() {
         isClosable: true,
       });
     }
+    setLoading(false)
   };
 
   return (
