@@ -11,9 +11,9 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
-  useDisclosure,
+  useDisclosure, Text,
 } from "@chakra-ui/react";
-import Image from "next/image";
+import { CldImage } from 'next-cloudinary';
 
 export default function Project(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -27,11 +27,10 @@ export default function Project(props) {
         overflow="hidden"
       >
         <Link onClick={onOpen}>
-          <Image
+          <CldImage
             src={props.src}
             alt={props.alt}
             loading="lazy"
-            fallback={<Skeleton />}
             width={400}
             height={400}
             rounded="xl"
@@ -46,16 +45,16 @@ export default function Project(props) {
           <ModalHeader>{props.alt}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            {props.desc}
-              <Image
-                mt={2}
+            <Text mb={4}>{props.desc}</Text>
+            <Box borderRadius="lg" overflow="hidden">
+              <CldImage
                 objectFit={"contain"}
-                fallback={<Skeleton />}
                 width={400}
                 height={300}
                 src={props.src}
                 alt={props.alt}
               />
+            </Box>
           </ModalBody>
 
           <ModalFooter align="left">
