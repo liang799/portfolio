@@ -6,7 +6,7 @@ const ContactData = [
   },
   {
     icon: "fab fa-linkedin-in",
-    href: "https://www.linkedin.com/in/tianpok",
+    href: "https://www.linkedin.com/in/tianpok-neoh",
     text: "linkedin.com/in/tianpok",
   },
   {
