@@ -14,8 +14,8 @@ import {
   CloseIcon,
 } from "@chakra-ui/icons";
 import { useContext, useState, useEffect } from "react";
-import { ScrollToRefContext } from "../pages";
-import { smoothScrollToRef } from "../utils/scroll";
+import { ScrollToRefContext } from "@/pages";
+import { smoothScrollToRef } from "@/utils/scroll";
 
 export default function Header() {
   const { isOpen, onToggle } = useDisclosure();

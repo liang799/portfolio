@@ -2,17 +2,14 @@ import {
   Flex,
   Container,
   Box,
-  Heading,
   Image,
-  Link,
   Stack,
   Text,
   Button,
-  useBreakpointValue,
 } from "@chakra-ui/react";
 import { useContext } from "react";
-import { ScrollToRefContext } from "../pages";
-import { smoothScrollToRef } from "../utils/scroll";
+import { ScrollToRefContext } from "@/pages";
+import { smoothScrollToRef } from "@/utils/scroll";
 
 export default function Hero() {
   const scrollables = useContext(ScrollToRefContext);

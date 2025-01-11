@@ -26,7 +26,7 @@ export default function ContactAlt() {
             Like what you see? Have any queries? Feel free to contact me! I am
             usually active on email and LinkedIn.
           </Text>
-          {OTHER.map(({ index, icon, href, text }) => (
+          {OTHER.map(({ icon, href, text }, index) => (
             <HStack key={index} spacing={5}>
               <Box color="white" className={icon} />
               <Link color="white" href={href} isExternal>

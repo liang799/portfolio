@@ -26,7 +26,7 @@ export default function Skills({ ...props }) {
           Skills
         </Heading>
         <SimpleGrid columns={[1, 2, 3]} spacing="40px" pb={9}>
-          {SKILLS.map(({ index, title, desc, icon }) => (
+          {SKILLS.map(({ title, desc, icon }, index) => (
             <Skill key={index} title={title} desc={desc} icon={icon} />
           ))}
         </SimpleGrid>
@@ -35,7 +35,13 @@ export default function Skills({ ...props }) {
   );
 }
 
-const SKILLS = [
+export interface SkillData {
+    icon: string,
+    title: string,
+    desc: string,
+}
+
+const SKILLS: Array<SkillData> = [
   {
     icon: "fas fa-object-ungroup fa-3x",
     title: "UI/UX Design",

@@ -8,8 +8,15 @@ import {
   VisuallyHidden,
 } from "@chakra-ui/react";
 import content from "./ContactData";
+import React from "react";
 
-const SocialButton = ({ children, label, href }) => {
+interface SocialButtonProps {
+    children: React.ReactNode; // Type for children
+    label: string;              // Type for label
+    href: string;               // Type for href
+}
+
+const SocialButton: React.FC<SocialButtonProps> = ({ children, label, href }) => {
   return (
     <chakra.button
       bg= "whiteAlpha.100"
@@ -52,7 +59,7 @@ export default function SmallWithSocial() {
           spacing={6}
           display={{ base: "inline-block", md: "none" }}
         >
-          {content.map(({ index, icon, href, text }) => (
+          {content.map(({ icon, href, text }, index) => (
             <SocialButton key={index} label={"Email"} href={href}>
               <Box className={icon} />
             </SocialButton>

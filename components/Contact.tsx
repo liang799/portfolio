@@ -1,8 +1,9 @@
 import { Flex, Stack, Heading, Container } from "@chakra-ui/react";
 import Form from "./Form";
 import ContactAlt from "./ContactAlt";
+import React from "react";
 
-export default function Contact({ ...props }) {
+export default function Contact(props: { ref?: React.Ref<HTMLDivElement> }) {
   return (
     <Container maxWidth="full" bg="black.main" p={0} ref={props.ref}>
       <Container

@@ -1,16 +1,7 @@
-import React from "react";
 import {
-  Center,
   Heading,
   Container,
-  Image,
   SimpleGrid,
-  Link,
-  Box,
-  VStack,
-  Flex,
-  Text,
-  Skeleton,
 } from "@chakra-ui/react";
 import Project from "./Project";
 
@@ -41,8 +32,8 @@ export default function Portfolio({ ...props }) {
           spacingY="40px"
           pb={10}
         >
-          {PROJECTS.map(({ index, link, src, alt, desc }) => (
-            <Project key={index} link={link} src={src} alt={alt} desc={desc} />
+          {PROJECTS.map((project, index) => (
+            <Project key={index} project={project} />
           ))}
         </SimpleGrid>
       </Container>
@@ -51,7 +42,13 @@ export default function Portfolio({ ...props }) {
 }
 
 /* Ensure image ratio is 3:2 */
-const PROJECTS = [
+export interface ProjectData {
+  link: string,
+  src: string,
+  alt: string,
+  desc: string,
+}
+const PROJECTS: Array<ProjectData> = [
   {
     link: "https://github.com/liang799/Vigour",
     src: "vigour_zpuako",

@@ -13,8 +13,13 @@ import {
   useDisclosure, Text,
 } from "@chakra-ui/react";
 import { CldImage } from 'next-cloudinary';
+import {ProjectData} from "@/components/Portfolio";
 
-export default function Project(props) {
+interface ProjectProps {
+  project: ProjectData;
+}
+
+export default function Project({ project }: ProjectProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -27,11 +32,10 @@ export default function Project(props) {
       >
         <Link onClick={onOpen}>
           <CldImage
-            src={props.src}
-            alt={props.alt}
+            src={project.src}
+            alt={project.alt}
             width={400}
             height={400}
-            rounded="xl"
             objectFit="cover"
           />
         </Link>
@@ -40,24 +44,24 @@ export default function Project(props) {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>{props.alt}</ModalHeader>
+          <ModalHeader>{project.alt}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Text mb={4}>{props.desc}</Text>
+            <Text mb={4}>{project.desc}</Text>
             <Box borderRadius="lg" overflow="hidden">
               <CldImage
                 objectFit={"contain"}
                 width={400}
                 loading="lazy"
                 height={300}
-                src={props.src}
-                alt={props.alt}
+                src={project.src}
+                alt={project.alt}
               />
             </Box>
           </ModalBody>
 
-          <ModalFooter align="left">
-            <Link href={props.link} isExternal>
+          <ModalFooter>
+            <Link href={project.link} isExternal>
               <Button colorScheme="primary" mr={3}>
                 Visit
               </Button>

@@ -1,6 +1,7 @@
 import { Heading, Box, Stack, Text, Center } from "@chakra-ui/react";
+import {SkillData} from "@/components/Skills";
 
-export default function Skill(props) {
+export default function Skill({icon, title, desc}) {
   return (
     <Box
       w={"full"}
@@ -13,11 +14,11 @@ export default function Skill(props) {
         <Box
           pt={3}
           color="primary.500"
-          className={props.icon}
+          className={icon}
         />
-        <Heading as="h3" size="md" textTransform="uppercase">{props.title}</Heading>
+        <Heading as="h3" size="md" textTransform="uppercase">{title}</Heading>
         <Center wordWrap="break-word">
-          <Text>{props.desc}</Text>
+          <Text>{desc}</Text>
         </Center>
       </Stack>
     </Box>
