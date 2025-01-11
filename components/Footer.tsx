@@ -59,7 +59,7 @@ export default function SmallWithSocial() {
           spacing={6}
           display={{ base: "inline-block", md: "none" }}
         >
-          {content.map(({ icon, href, text }, index) => (
+          {content.map(({ icon, href }, index) => (
             <SocialButton key={index} label={"Email"} href={href}>
               <Box className={icon} />
             </SocialButton>
