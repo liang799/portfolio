@@ -42,8 +42,8 @@ export default function Project({ project }: ProjectProps) {
       </Box>
 
       <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
+        <ModalOverlay bg="blackAlpha.800"/>
+        <ModalContent bg="white">
           <ModalHeader>{project.alt}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
