@@ -14,6 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { CldImage } from 'next-cloudinary';
 import {ProjectData} from "@/components/Portfolio";
+import {motion} from "framer-motion";
 
 interface ProjectProps {
   project: ProjectData;
@@ -25,10 +26,13 @@ export default function Project({ project }: ProjectProps) {
   return (
     <>
       <Box
+        as={motion.div}
         borderRadius={5}
         lineHeight="0"
         _hover={{ boxShadow: "dark-lg" }}
         overflow="hidden"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
       >
         <Link onClick={onOpen}>
           <CldImage

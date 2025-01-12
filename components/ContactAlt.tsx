@@ -7,9 +7,11 @@ import {
   Link,
 } from "@chakra-ui/react";
 import OTHER from "./ContactData";
+import {motion} from "framer-motion";
 export default function ContactAlt() {
   return(
       <Flex
+        as={motion.aside}
         ml={9}
         mt={9}
         mb={9}
@@ -20,6 +22,8 @@ export default function ContactAlt() {
         align="center"
         justify="center"
         display={{ base: "none", md: "flex" }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1, transition: { delay: 0.2 } }}
       >
         <Stack pl={{ base: 10, lg: 20 }} pr={{ base: 10, lg: 20 }}>
           <Text color="white" pb={5}>
